@@ -43,8 +43,10 @@ export const ListContainer = styled.ul`
 
     .icon-wrapper {
       display: flex;
-      padding: 1rem;
-      border-radius: 50%;
+      align-items: center;
+      justify-content: center;
+      padding: .5rem;
+      border-radius: 999px;
       
       .icon {
         color: white;

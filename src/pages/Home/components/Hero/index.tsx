@@ -7,25 +7,25 @@ const ListItems = [
   {
     id: 1,
     message: 'Compra simples e segura',
-    icon: <ShoppingCart className="icon" size={24} />,
+    icon: <ShoppingCart className="icon" size={16} />,
     bgColor: defaultTheme.colors["yellow-dark"]
   },
   {
     id: 2,
     message: 'Embalagem mantém o café intacto',
-    icon: <Package className="icon" size={24} />,
+    icon: <Package className="icon" size={16} />,
     bgColor: defaultTheme.colors["base-text"]
   },
   {
     id: 3,
     message: 'Entrega rápida e rastreada',
-    icon: <Timer className="icon" size={24} />,
+    icon: <Timer className="icon" size={16} />,
     bgColor: defaultTheme.colors.yellow
   },
   {
     id: 4,
     message: 'O café chega fresquinho até você',
-    icon: <Coffee className="icon" size={24} />,
+    icon: <Coffee className="icon" size={16} />,
     bgColor: defaultTheme.colors.purple
   },
 ]
