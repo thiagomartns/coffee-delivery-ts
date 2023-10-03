@@ -13,12 +13,11 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     background: ${(props) => props.theme["base-background"]};
-    color: ${(props) => props.theme["base-title"]};
     -webkit-font-smoothing: antialiased;
   }
 
   body, input-security, textarea, button {
-    font: ${props => props.theme.typography["baloo-title-xl"]};
+    /* font: ${props => props.theme.typography["baloo-title-xl"]}; */
     font-weight: 400;
     font-size: 1rem
   }

@@ -5,22 +5,23 @@ export const HeroContainer = styled.section`
   margin-top: 5rem;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
 
   `
 
 export const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.25rem;
   justify-content: flex-start;
+  width: 50%;
 
   h1 {
     font: ${props => props.theme.typography["baloo-title-xl"]}
   }
 
   p {
-    font: ${props => props.theme.typography["roboto-r-text-l"]}
+    font: ${props => props.theme.typography["roboto-r-text-l"]};
+    color: ${props => props.theme.colors["base-subtitle"]}
   }
 `
 
@@ -31,8 +32,9 @@ export const ListContainer = styled.ul`
   display: grid;
   grid-template-columns: 1fr 1fr;
   flex-wrap: wrap;
-  gap: 1.25rem;
+  gap: 2rem;
   width: 100%;
+  margin-top: 2rem;
   
   li {
     display: flex;
@@ -41,7 +43,6 @@ export const ListContainer = styled.ul`
 
     .icon-wrapper {
       display: flex;
-      background-color: pink;
       padding: 1rem;
       border-radius: 50%;
       
@@ -52,7 +53,8 @@ export const ListContainer = styled.ul`
 
 
     p {
-      font: ${props => props.theme.typography["roboto-r-text-m"]}
+      font: ${props => props.theme.typography["roboto-r-text-m"]};
+      color: ${props => props.theme.colors["base-text"]}
     }
   }
 `
