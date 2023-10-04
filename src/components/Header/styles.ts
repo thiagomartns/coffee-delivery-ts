@@ -6,12 +6,24 @@ export const HeaderContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   max-height: 2rem;
-  
+
+  @media (min-width: 375px) and (max-width: 767px) {
+    margin-bottom: 0;
+    max-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .buttons {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 2rem;
+
+    @media (min-width: 375px) and (max-width: 767px) {
+      display: none;
+    }
 
     .button-city {
       display: flex;

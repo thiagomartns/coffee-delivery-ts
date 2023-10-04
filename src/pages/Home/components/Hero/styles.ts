@@ -15,17 +15,37 @@ export const TextContainer = styled.div`
   justify-content: flex-start;
   width: 50%;
 
+  @media (min-width: 375px) and (max-width: 1000px) {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
   h1 {
-    font: ${props => props.theme.typography["baloo-title-xl"]}
+    font: ${props => props.theme.typography["baloo-title-xl"]};
+
+    @media (min-width: 375px) and (max-width: 767px) {
+      font: ${props => props.theme.typography["baloo-title-l"]};
+      text-align: center;
+    }
   }
 
   p {
     font: ${props => props.theme.typography["roboto-r-text-l"]};
-    color: ${props => props.theme.colors["base-subtitle"]}
+    color: ${props => props.theme.colors["base-subtitle"]};
+
+    @media (min-width: 375px) and (max-width: 767px) {
+      font: ${props => props.theme.typography["roboto-r-text-m"]};
+      text-align: center;
+    }
   }
 `
 
-export const ImageContainer = styled.div``
+export const ImageContainer = styled.div`
+
+  @media (min-width: 375px) and (max-width: 1000px) {
+    display: none;
+  }
+`
 
 export const ListContainer = styled.ul`
   list-style: none;
@@ -35,6 +55,10 @@ export const ListContainer = styled.ul`
   gap: 2rem;
   width: 100%;
   margin-top: 2rem;
+
+  @media (min-width: 375px) and (max-width: 767px) {
+    grid-template-columns: 1fr;
+  }
   
   li {
     display: flex;
@@ -56,7 +80,8 @@ export const ListContainer = styled.ul`
 
     p {
       font: ${props => props.theme.typography["roboto-r-text-m"]};
-      color: ${props => props.theme.colors["base-text"]}
+      color: ${props => props.theme.colors["base-text"]};
+      text-align: left;
     }
   }
 `
