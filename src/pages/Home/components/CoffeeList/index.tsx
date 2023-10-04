@@ -1,4 +1,5 @@
 
+import { Minus, Plus, ShoppingCart } from "phosphor-react"
 import { CoffeeListItems } from "./data/data"
 import { CoffeListContainer, CoffeListContent } from "./styles"
 
@@ -21,8 +22,14 @@ export const CoffeList = () => {
             <p>{coffee.info}</p>
             <div className="price-and-cart">
               <div className="price"><span>R$</span><h3>{coffee.price.toLocaleString('pt-br', {minimumFractionDigits: 2})}</h3></div>
-              <div className="counter"></div>
-              <div className="cart"></div>
+              <div className="counter">
+                <button><Minus /></button>
+                <span>1</span>
+                <button><Plus /></button>
+              </div>
+              <div className="cart">
+                <ShoppingCart size={20} color='white' />
+              </div>
             </div>
           </div>
         ))}

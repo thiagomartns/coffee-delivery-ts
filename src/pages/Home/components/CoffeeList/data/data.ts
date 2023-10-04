@@ -115,7 +115,7 @@ export const CoffeeListItems: CoffeeListProps[] = [
     id: 12,
     tags: ['especial'],
     img: Havaiano,
-    info: 'Bebida adocicada preparada com café e leite de coco',
+    info: 'Bebida adocicada preparada com café e leite de coco e amêndoas',
     title: 'havaiano',
     price: 19.65
   },
