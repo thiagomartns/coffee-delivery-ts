@@ -11,6 +11,11 @@ export const CoffeListContainer = styled.div`
 `
 
 export const CoffeListContent = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+
   .card {
     background-color: ${props => props.theme.colors["base-card"]};
     width: 20%;
@@ -21,12 +26,27 @@ export const CoffeListContent = styled.div`
     justify-content: center;
     margin: 2rem 0;
     padding: 2rem;
-    gap: .5rem;
+    gap: .875rem;
+    /* min-height: 310px; */
+    min-width: 256px;
+
+    .badge {
+      background-color: ${props => props.theme.colors["yellow-light"]};
+      padding: 4px 8px;
+      border-radius: 100px;
+
+      h3 {
+        color: ${props => props.theme.colors["yellow-dark"]};
+        font: ${props => props.theme.typography.tag};
+        text-transform: uppercase;
+      }
+    }
 
     h2 {
       font: ${props => props.theme.typography["baloo-title-s"]};
       color: ${props => props.theme.colors["base-subtitle"]};
       text-align: center;
+      text-transform: capitalize;
     }
 
     p {
@@ -36,6 +56,7 @@ export const CoffeListContent = styled.div`
     }
 
     .price-and-cart {
+      align-self: flex-start;
 
       .price {
         display: flex;
