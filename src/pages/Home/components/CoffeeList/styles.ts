@@ -15,6 +15,7 @@ export const CoffeListContent = styled.div`
   align-items: center;
   justify-content: center;
   gap: 2rem;
+  flex-wrap: wrap;
 
   .card {
     background-color: ${props => props.theme.colors["base-card"]};
@@ -27,20 +28,25 @@ export const CoffeListContent = styled.div`
     margin: 2rem 0;
     padding: 2rem;
     gap: .875rem;
-    /* min-height: 310px; */
     min-width: 256px;
 
-    .badge {
-      background-color: ${props => props.theme.colors["yellow-light"]};
-      padding: 4px 8px;
-      border-radius: 100px;
-
-      h3 {
-        color: ${props => props.theme.colors["yellow-dark"]};
-        font: ${props => props.theme.typography.tag};
-        text-transform: uppercase;
+    .badgeContainer {
+      display: flex;
+      gap: .75rem;
+      .badge {
+        background-color: ${props => props.theme.colors["yellow-light"]};
+        padding: 4px 8px;
+        border-radius: 100px;
+        display: flex;
+  
+        h3 {
+          color: ${props => props.theme.colors["yellow-dark"]};
+          font: ${props => props.theme.typography.tag};
+          text-transform: uppercase;
+        }
       }
     }
+
 
     h2 {
       font: ${props => props.theme.typography["baloo-title-s"]};
