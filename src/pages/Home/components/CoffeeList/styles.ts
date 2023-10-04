@@ -30,11 +30,12 @@ export const CoffeListContent = styled.div`
     margin: 2rem 0;
     padding: 2rem;
     gap: 1.25rem;
-    min-width: 256px;
-    min-height: 420px;
+    width: 256px;
+    height: 420px;
 
     img {
-      margin: auto 0;
+      width: 120px;
+      height: 120px;
     }
 
     .badgeContainer {
@@ -66,6 +67,9 @@ export const CoffeListContent = styled.div`
       font: ${(props) => props.theme.typography["roboto-text-s"]};
       color: ${(props) => props.theme.colors["base-label"]};
       text-align: center;
+      height: 3rem;
+      width: 20ch;
+      margin-bottom: 1rem;
     }
 
     .price-and-cart {
