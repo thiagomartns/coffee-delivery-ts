@@ -29,6 +29,12 @@ export const CoffeListContent = styled.div`
     padding: 2rem;
     gap: .875rem;
     min-width: 256px;
+    min-height: 400px;
+
+    img {
+      width: 120px;
+      height: 120px;
+    }
 
     .badgeContainer {
       display: flex;
