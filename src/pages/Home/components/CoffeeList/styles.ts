@@ -41,7 +41,10 @@ export const CoffeListContent = styled.div`
     gap: 1.25rem;
     width: 256px;
     height: 410px;
-    flex: 1;
+
+    @media (min-width: 767px) and (max-width: 1400px) {
+      flex: 1
+    }
 
     img {
       width: 120px;
