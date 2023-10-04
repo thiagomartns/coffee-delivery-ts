@@ -13,8 +13,8 @@ export const CoffeListContainer = styled.div`
 export const CoffeListContent = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 2rem;
+  justify-content: space-between;
+  gap: 1rem;
   flex-wrap: wrap;
 
   .card {
