@@ -3,9 +3,16 @@ import Logo from "../../../public/assets/img/Logo.svg";
 import { HeaderContainer } from "./styles";
 import { CoffeeCartContext } from "../../contexts/CoffeeCartContext";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const Header = () => {
   const { total, totalValue } = useContext(CoffeeCartContext);
+
+  const navigate = useNavigate();
+
+  const handleNavigateCart = () => {
+    navigate("/checkout");
+  };
 
   return (
     <HeaderContainer>
@@ -24,7 +31,12 @@ export const Header = () => {
           <div className="counter">
             <p>{total}</p>
           </div>
-          <ShoppingCart weight="bold" size={24} className="icon" />
+          <ShoppingCart
+            onClick={handleNavigateCart}
+            weight="bold"
+            size={24}
+            className="icon"
+          />
         </div>
       </div>
     </HeaderContainer>

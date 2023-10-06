@@ -2,6 +2,7 @@ import { Minus, Plus, ShoppingCart } from "phosphor-react";
 import { useState, useContext } from "react";
 import { Card } from "./styles";
 import { CoffeeCartContext } from "../../../../../../contexts/CoffeeCartContext";
+import { useNavigate } from "react-router-dom";
 
 interface CoffeeData {
   id: number;
@@ -20,6 +21,12 @@ export const CoffeeItem = ({ data }: CoffeeItemProps) => {
   const [count, setCount] = useState<number>(0);
 
   const { updateTotal, updateTotalValue } = useContext(CoffeeCartContext);
+
+  const navigate = useNavigate();
+
+  const handleNavigateCart = () => {
+    navigate("/checkout");
+  };
 
   const handleSum = () => {
     setCount(count + 1);
@@ -64,7 +71,7 @@ export const CoffeeItem = ({ data }: CoffeeItemProps) => {
           </button>
         </div>
         <div className="cart">
-          <ShoppingCart size={20} color="white" />
+          <ShoppingCart onClick={handleNavigateCart} size={20} color="white" />
         </div>
       </div>
     </Card>
