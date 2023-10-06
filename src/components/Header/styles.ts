@@ -1,16 +1,16 @@
 import styled from "styled-components";
 
 export const HeaderContainer = styled.div`
-  margin-bottom: 2rem;
-  display: flex;
   align-items: center;
-  justify-content: space-between;
+  display: flex;
+  margin-bottom: 2rem;
   max-height: 2rem;
+  justify-content: space-between;
 
   @media (min-width: 375px) and (max-width: 767px) {
+    display: flex;
     margin-bottom: 0;
     max-height: 0;
-    display: flex;
     align-items: center;
     justify-content: center;
   }
@@ -26,32 +26,51 @@ export const HeaderContainer = styled.div`
     }
 
     .button-city {
-      display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 4px;
-      background-color: ${props => props.theme.colors["purple-light"]};
+      background-color: ${(props) => props.theme.colors["purple-light"]};
       border-radius: 6px;
+      display: flex;
+      gap: 4px;
+      justify-content: center;
       padding: 1rem;
 
       .icon {
-        color: ${props => props.theme.colors.purple};
+        color: ${(props) => props.theme.colors.purple};
       }
 
       p {
-        font: ${props => props.theme.typography["roboto-text-s"]};
-        color: ${props => props.theme.colors.purple};
+        color: ${(props) => props.theme.colors.purple};
+        font: ${(props) => props.theme.typography["roboto-text-s"]};
       }
     }
 
     .button-cart {
-      padding: .75rem 1rem;
+      background-color: ${(props) => props.theme.colors["yellow-light"]};
       border-radius: 6px;
-      background-color: ${props => props.theme.colors["yellow-light"]};
+      padding: 0.75rem 1rem;
+
+      .counter {
+        align-items: center;
+        background-color: ${(props) => props.theme.colors["yellow-dark"]};
+        border-radius: 999px;
+        display: flex;
+        height: 24px;
+        justify-content: center;
+        position: absolute;
+        right: 4%;
+        top: 3.5%;
+        width: 24px;
+
+        p {
+          color: ${(props) => props.theme.colors.white};
+          font: ${(props) => props.theme.typography["roboto-text-s"]};
+        }
+      }
 
       .icon {
-        color: ${props => props.theme.colors["yellow-dark"]};
+        color: ${(props) => props.theme.colors["yellow-dark"]};
+        position: relative;
       }
     }
   }
-`
+`;
