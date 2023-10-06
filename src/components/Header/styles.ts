@@ -1,11 +1,13 @@
 import styled from "styled-components";
 
 export const HeaderContainer = styled.div`
-  align-items: center;
   display: flex;
-  margin-bottom: 2rem;
-  max-height: 2rem;
   justify-content: space-between;
+  position: sticky;
+  top: 0;
+  padding: 1.25rem 0;
+  background-color: #fff;
+  z-index: 100;
 
   @media (min-width: 375px) and (max-width: 767px) {
     display: flex;
