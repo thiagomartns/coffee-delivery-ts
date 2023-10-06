@@ -47,6 +47,7 @@ export const HeaderContainer = styled.div`
     .button-cart {
       background-color: ${(props) => props.theme.colors["yellow-light"]};
       border-radius: 6px;
+      position: relative;
       padding: 0.75rem 1rem;
 
       .counter {
@@ -56,10 +57,10 @@ export const HeaderContainer = styled.div`
         display: flex;
         height: 24px;
         justify-content: center;
-        position: absolute;
-        right: 4%;
-        top: 3.5%;
         width: 24px;
+        position: absolute;
+        top: -10px;
+        right: -10px;
 
         p {
           color: ${(props) => props.theme.colors.white};
@@ -69,7 +70,6 @@ export const HeaderContainer = styled.div`
 
       .icon {
         color: ${(props) => props.theme.colors["yellow-dark"]};
-        position: relative;
       }
     }
   }

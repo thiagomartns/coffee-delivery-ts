@@ -1,8 +1,7 @@
 import { Minus, Plus, ShoppingCart } from "phosphor-react";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Card } from "./styles";
-
-type UpdateTotalFunction = (amount: number) => void;
+import { CoffeeCartContext } from "../../../../../../contexts/CoffeeCartContext";
 
 interface CoffeeData {
   id: number;
@@ -15,11 +14,12 @@ interface CoffeeData {
 
 interface CoffeeItemProps {
   data: CoffeeData;
-  updateTotal: UpdateTotalFunction;
 }
 
-export const CoffeeItem = ({ data, updateTotal }: CoffeeItemProps) => {
+export const CoffeeItem = ({ data }: CoffeeItemProps) => {
   const [count, setCount] = useState<number>(0);
+
+  const { updateTotal } = useContext(CoffeeCartContext);
 
   const handleSum = () => {
     setCount(count + 1);
