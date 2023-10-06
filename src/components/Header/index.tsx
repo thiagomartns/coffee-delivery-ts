@@ -5,12 +5,17 @@ import { CoffeeCartContext } from "../../contexts/CoffeeCartContext";
 import { useContext } from "react";
 
 export const Header = () => {
-  const { total } = useContext(CoffeeCartContext);
+  const { total, totalValue } = useContext(CoffeeCartContext);
 
   return (
     <HeaderContainer>
       <img src={Logo} alt="" />
       <div className="buttons">
+        <h1>
+          {totalValue.toLocaleString("pt-br", {
+            minimumFractionDigits: 2,
+          })}
+        </h1>
         <div className="button-city">
           <MapPin size={20} className="icon" />
           <p>Porto Alegre, RS</p>

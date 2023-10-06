@@ -19,16 +19,18 @@ interface CoffeeItemProps {
 export const CoffeeItem = ({ data }: CoffeeItemProps) => {
   const [count, setCount] = useState<number>(0);
 
-  const { updateTotal } = useContext(CoffeeCartContext);
+  const { updateTotal, updateTotalValue } = useContext(CoffeeCartContext);
 
   const handleSum = () => {
     setCount(count + 1);
     updateTotal(1);
+    updateTotalValue(data.price);
   };
 
   const handleMinus = () => {
     setCount(count - 1);
     updateTotal(-1);
+    updateTotalValue(-data.price);
   };
 
   return (
