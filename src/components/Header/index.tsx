@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const Header = () => {
-  const { total, totalValue } = useContext(CoffeeCartContext);
+  const { total } = useContext(CoffeeCartContext);
 
   const navigate = useNavigate();
 
@@ -18,11 +18,6 @@ export const Header = () => {
     <HeaderContainer>
       <img src={Logo} alt="" />
       <div className="buttons">
-        <h1>
-          {totalValue.toLocaleString("pt-br", {
-            minimumFractionDigits: 2,
-          })}
-        </h1>
         <div className="button-city">
           <MapPin size={20} className="icon" />
           <p>Porto Alegre, RS</p>

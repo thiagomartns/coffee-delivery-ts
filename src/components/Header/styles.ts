@@ -52,6 +52,10 @@ export const HeaderContainer = styled.div`
       position: relative;
       padding: 0.75rem 1rem;
 
+      &:hover {
+        cursor: pointer;
+      }
+
       .counter {
         align-items: center;
         background-color: ${(props) => props.theme.colors["yellow-dark"]};
