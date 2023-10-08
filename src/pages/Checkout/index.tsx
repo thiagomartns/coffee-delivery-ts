@@ -23,13 +23,9 @@ import {
 export const Checkout = () => {
   const { totalValue } = useContext(CoffeeCartContext);
 
-  const paymentTotalValue = totalValue.toLocaleString("pt-br", {
-    minimumFractionDigits: 2,
-  });
+  const deliveryTax = Number(3.5).toFixed(2);
 
-  const deliveryTax = (3.5).toLocaleString("pt-br", {
-    minimumFractionDigits: 2,
-  });
+  const totalWithTaxes = totalValue + Number(deliveryTax);
 
   return (
     <CheckoutContainer>
@@ -79,7 +75,7 @@ export const Checkout = () => {
             <div className="totalPayment">
               <TotalItems className="totalItems">
                 <p>Total de itens</p>
-                <p>R$ {paymentTotalValue}</p>
+                <p>R$ {totalValue.toFixed(2)}</p>
               </TotalItems>
               <TotalItems className="totalItems">
                 <p>Entrega</p>
@@ -87,7 +83,7 @@ export const Checkout = () => {
               </TotalItems>
               <TotalItems className="totalItems">
                 <h3>Total</h3>
-                <h3>R$ {paymentTotalValue + deliveryTax}</h3>
+                <h3>R$ {totalWithTaxes.toFixed(2)}</h3>
               </TotalItems>
             </div>
           </form>
