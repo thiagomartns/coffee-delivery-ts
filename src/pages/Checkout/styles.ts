@@ -72,4 +72,25 @@ export const SelectedCoffeesStats = styled.div`
   background-color: ${(props) => props.theme.colors["base-card"]};
   padding: 40px;
   border-radius: 6px 44px;
+
+  .totalPayment {
+    display: flex;
+    flex-direction: column;
+  }
+`;
+
+export const TotalItems = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+
+  p {
+    font: ${(props) => props.theme.typography["roboto-text-s"]};
+    color: ${(props) => props.theme.colors["base-text"]};
+  }
+
+  h3 {
+    font: ${(props) => props.theme.typography["roboto-b-text-l"]};
+    color: ${(props) => props.theme.colors["base-subtitle"]};
+  }
 `;

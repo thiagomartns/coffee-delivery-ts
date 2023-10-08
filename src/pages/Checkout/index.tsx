@@ -10,6 +10,7 @@ import {
   SelectedCoffees,
   SelectedCoffeesStats,
   Title,
+  TotalItems,
 } from "./styles";
 import {
   Bank,
@@ -76,18 +77,18 @@ export const Checkout = () => {
           <form action="">
             <div className="itemsSelected"></div>
             <div className="totalPayment">
-              <div className="totalItems">
+              <TotalItems className="totalItems">
                 <p>Total de itens</p>
-                <p>{paymentTotalValue}</p>
-              </div>
-              <div className="delivery">
+                <p>R$ {paymentTotalValue}</p>
+              </TotalItems>
+              <TotalItems className="totalItems">
                 <p>Entrega</p>
-                <p>{deliveryTax}</p>
-              </div>
-              <div className="totalValueItems">
+                <p>R$ {deliveryTax}</p>
+              </TotalItems>
+              <TotalItems className="totalItems">
                 <h3>Total</h3>
-                <h3>{paymentTotalValue + deliveryTax}</h3>
-              </div>
+                <h3>R$ {paymentTotalValue + deliveryTax}</h3>
+              </TotalItems>
             </div>
           </form>
         </SelectedCoffeesStats>
