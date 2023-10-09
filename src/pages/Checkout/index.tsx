@@ -36,6 +36,13 @@ export const Checkout = () => {
 
   const [userAddress, setUserAddress] = useState<NewUserAddress[]>([]);
 
+  const [selectedPaymentMethod, setSelectedPaymentMethod] =
+    useState<string>("");
+
+  const handlePaymentMethodChoice = (paymentMethod: string) => {
+    setSelectedPaymentMethod(paymentMethod);
+  };
+
   const deliveryTax = Number(3.5).toFixed(2);
 
   const totalWithTaxes = totalValue + Number(deliveryTax);
@@ -93,7 +100,11 @@ export const Checkout = () => {
           </Header>
           <PaymentOptions>
             {paymentOptions.map((option) => (
-              <PaymentOption key={option.id}>
+              <PaymentOption
+                value={option.paymentMethod}
+                onClick={() => handlePaymentMethodChoice(option.paymentMethod)}
+                key={option.id}
+              >
                 {option.icon}
                 <p>{option.paymentMethod}</p>
               </PaymentOption>

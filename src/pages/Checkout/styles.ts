@@ -74,7 +74,7 @@ export const PaymentOptions = styled.div`
   gap: 1rem;
 `;
 
-export const PaymentOption = styled.button`
+export const PaymentOption = styled.div`
   padding: 1rem;
   border-radius: 6px;
   background-color: ${(props) => props.theme.colors["base-button"]};
