@@ -22,6 +22,15 @@ import {
   Money,
 } from "phosphor-react";
 import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as zod from "zod";
+
+const newAddressFormValidationSchema = zod.object({
+  rua: zod.string().min(1, "Informe a rua"),
+  cep: zod.string().min(1, "Informe seu CEP"),
+});
+
+type NewAddressFormData = zod.infer<typeof newAddressFormValidationSchema>;
 
 export const Checkout = () => {
   const { totalValue } = useContext(CoffeeCartContext);
@@ -30,19 +39,27 @@ export const Checkout = () => {
 
   const totalWithTaxes = totalValue + Number(deliveryTax);
 
-  const { register, handleSubmit, watch } = useForm();
+  const { register, handleSubmit, watch, reset } = useForm<NewAddressFormData>({
+    resolver: zodResolver(newAddressFormValidationSchema),
+    defaultValues: {
+      rua: "",
+      cep: "",
+    },
+  });
 
   const rua = watch("rua");
+  const cep = watch("cep");
 
-  const isSubmitDisabled = !rua;
+  const isSubmitDisabled = !rua || !cep;
 
-  const createNewAddress = (data: any, e: any) => {
+  const handleCreateNewAddress = (data: NewAddressFormData, e: any) => {
     e.preventDefault();
     console.log(data);
+    reset();
   };
 
   return (
-    <Form onSubmit={handleSubmit(createNewAddress)}>
+    <Form onSubmit={handleSubmit(handleCreateNewAddress)}>
       <CheckoutContainer>
         <Title>Complete seu pedido</Title>
         <FormContainerStats className="addressContainer">
@@ -54,11 +71,7 @@ export const Checkout = () => {
             </div>
           </Header>
           <div className="inputContainer">
-            <Input
-              type="number"
-              placeholder="CEP"
-              {...register("cep", { valueAsNumber: true })}
-            />
+            <Input type="text" placeholder="CEP" {...register("cep")} />
             <Input type="text" placeholder="Rua" {...register("rua")} />
           </div>
         </FormContainerStats>
