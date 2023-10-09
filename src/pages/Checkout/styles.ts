@@ -4,6 +4,12 @@ export const Form = styled.form`
   display: grid;
   grid-template-columns: 10fr 9fr;
   gap: 2rem;
+
+  .inputContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
 `;
 
 export const CheckoutContainer = styled.div`
@@ -38,6 +44,28 @@ export const Header = styled.div`
       font: ${(props) => props.theme.typography["roboto-text-s"]};
       color: ${(props) => props.theme.colors["base-text"]};
     }
+  }
+`;
+
+export const Input = styled.input`
+  display: flex;
+  width: 434px;
+  padding: 12px;
+  align-items: center;
+  gap: 4px;
+  border-radius: 4px;
+  border: 1px solid ${(props) => props.theme.colors["base-button"]};
+  background-color: ${(props) => props.theme.colors["base-input"]};
+  font: ${(props) => props.theme.typography["roboto-text-s"]};
+  color: ${(props) => props.theme.colors["base-text"]};
+
+  &:focus {
+    border: 1px solid ${(props) => props.theme.colors["yellow-dark"]};
+    transition: border 0.4s ease;
+  }
+
+  &::placeholder {
+    color: ${(props) => props.theme.colors["base-label"]};
   }
 `;
 

@@ -5,6 +5,7 @@ import {
   Form,
   FormContainerStats,
   Header,
+  Input,
   PaymentOption,
   PaymentOptions,
   SelectedCoffees,
@@ -40,6 +41,10 @@ export const Checkout = () => {
               <p>Informe o endereço onde deseja receber seu pedido</p>
             </div>
           </Header>
+          <div className="inputContainer">
+            <Input type="number" placeholder="CEP" />
+            <Input type="text" placeholder="Rua" />
+          </div>
         </FormContainerStats>
         <FormContainerStats className="paymentContainer">
           <Header className="header">
@@ -85,6 +90,7 @@ export const Checkout = () => {
               <h3>R$ {totalWithTaxes.toFixed(2)}</h3>
             </TotalItems>
           </div>
+          {/* disabled quando inputs vazios */}
           <SubmitButton>confirmar pedido</SubmitButton>
         </SelectedCoffeesStats>
       </SelectedCoffees>
