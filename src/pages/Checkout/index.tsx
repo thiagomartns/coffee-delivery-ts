@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CoffeeCartContext } from "../../contexts/CoffeeCartContext";
 import {
   CheckoutContainer,
@@ -14,13 +14,7 @@ import {
   Title,
   TotalItems,
 } from "./styles";
-import {
-  Bank,
-  CreditCard,
-  CurrencyDollar,
-  MapPin,
-  Money,
-} from "phosphor-react";
+import { CurrencyDollar, MapPin } from "phosphor-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as zod from "zod";
@@ -30,10 +24,17 @@ const newAddressFormValidationSchema = zod.object({
   cep: zod.string().min(1, "Informe seu CEP"),
 });
 
+interface NewUserAddress {
+  rua: string;
+  cep: string;
+}
+
 type NewAddressFormData = zod.infer<typeof newAddressFormValidationSchema>;
 
 export const Checkout = () => {
-  const { totalValue } = useContext(CoffeeCartContext);
+  const { totalValue, paymentOptions } = useContext(CoffeeCartContext);
+
+  const [userAddress, setUserAddress] = useState<NewUserAddress[]>([]);
 
   const deliveryTax = Number(3.5).toFixed(2);
 
@@ -54,7 +55,11 @@ export const Checkout = () => {
 
   const handleCreateNewAddress = (data: NewAddressFormData, e: any) => {
     e.preventDefault();
-    console.log(data);
+    const newAddress: NewAddressFormData = {
+      rua: data.rua,
+      cep: data.cep,
+    };
+    setUserAddress((state) => [...state, newAddress]);
     reset();
   };
 
@@ -62,6 +67,7 @@ export const Checkout = () => {
     <Form onSubmit={handleSubmit(handleCreateNewAddress)}>
       <CheckoutContainer>
         <Title>Complete seu pedido</Title>
+        {/* <h2>{userAddress.length > 0 ? userAddress[0].rua : ""}</h2> */}
         <FormContainerStats className="addressContainer">
           <Header className="header">
             <MapPin />
@@ -85,19 +91,13 @@ export const Checkout = () => {
               </p>
             </div>
           </Header>
-          <PaymentOptions className="options">
-            <PaymentOption className="option">
-              <CreditCard />
-              <p>cartão de crédito</p>
-            </PaymentOption>
-            <PaymentOption className="option">
-              <Bank />
-              <p>cartão de débito</p>
-            </PaymentOption>
-            <PaymentOption className="option">
-              <Money />
-              <p>dinheiro</p>
-            </PaymentOption>
+          <PaymentOptions>
+            {paymentOptions.map((option) => (
+              <PaymentOption key={option.id}>
+                {option.icon}
+                <p>{option.paymentMethod}</p>
+              </PaymentOption>
+            ))}
           </PaymentOptions>
         </FormContainerStats>
       </CheckoutContainer>
