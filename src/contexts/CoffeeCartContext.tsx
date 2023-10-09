@@ -47,12 +47,12 @@ export const CoffeeCartContextProvider: React.FC<Props> = ({ children }) => {
       paymentMethod: "cartão de crédito",
     },
     {
-      id: 1,
+      id: 2,
       icon: <Bank />,
       paymentMethod: "cartão de débito",
     },
     {
-      id: 1,
+      id: 3,
       icon: <Money />,
       paymentMethod: "dinheiro",
     },
