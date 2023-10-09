@@ -1,9 +1,13 @@
+import { SuccessContainer, SuccessParag, SuccessTitle } from "./styles";
+
 export const Success = () => {
   return (
-    <div className="successContainer">
-      <h1>Uhu! Pedido confirmado</h1>
-      <p>Agora é só aguardar que logo o café chegará até você</p>
+    <SuccessContainer>
+      <SuccessTitle>Uhu! Pedido confirmado</SuccessTitle>
+      <SuccessParag>
+        Agora é só aguardar que logo o café chegará até você
+      </SuccessParag>
       <div className="successCard">Entrega</div>
-    </div>
+    </SuccessContainer>
   );
 };
