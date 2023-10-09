@@ -18,6 +18,7 @@ import { CurrencyDollar, MapPin } from "phosphor-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as zod from "zod";
+import { useNavigate } from "react-router-dom";
 
 const newAddressFormValidationSchema = zod.object({
   rua: zod.string().min(1, "Informe a rua"),
@@ -42,6 +43,8 @@ export const Checkout = () => {
   const handlePaymentMethodChoice = (paymentMethod: string) => {
     setSelectedPaymentMethod(paymentMethod);
   };
+
+  const navigate = useNavigate();
 
   const deliveryTax = Number(3.5).toFixed(2);
 
@@ -68,7 +71,9 @@ export const Checkout = () => {
     };
     setUserAddress((state) => [...state, newAddress]);
     reset();
-    console.log("Opção de pagamento selecionada:", selectedPaymentMethod);
+    navigate("/success");
+
+    return newAddress;
   };
 
   return (
