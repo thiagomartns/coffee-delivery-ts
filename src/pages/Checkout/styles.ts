@@ -138,4 +138,13 @@ export const SubmitButton = styled.button`
     background-color: ${(props) => props.theme.colors["yellow-dark"]};
     transition: background-color 0.3s ease;
   }
+
+  &:disabled {
+    opacity: 0.6;
+
+    &:hover {
+      cursor: not-allowed;
+      background-color: ${(props) => props.theme.colors["yellow"]};
+    }
+  }
 `;

@@ -21,6 +21,7 @@ import {
   MapPin,
   Money,
 } from "phosphor-react";
+import { useForm } from "react-hook-form";
 
 export const Checkout = () => {
   const { totalValue } = useContext(CoffeeCartContext);
@@ -29,8 +30,19 @@ export const Checkout = () => {
 
   const totalWithTaxes = totalValue + Number(deliveryTax);
 
+  const { register, handleSubmit, watch } = useForm();
+
+  const rua = watch("rua");
+
+  const isSubmitDisabled = !rua;
+
+  const createNewAddress = (data: any, e: any) => {
+    e.preventDefault();
+    console.log(data);
+  };
+
   return (
-    <Form>
+    <Form onSubmit={handleSubmit(createNewAddress)}>
       <CheckoutContainer>
         <Title>Complete seu pedido</Title>
         <FormContainerStats className="addressContainer">
@@ -42,8 +54,12 @@ export const Checkout = () => {
             </div>
           </Header>
           <div className="inputContainer">
-            <Input type="number" placeholder="CEP" />
-            <Input type="text" placeholder="Rua" />
+            <Input
+              type="number"
+              placeholder="CEP"
+              {...register("cep", { valueAsNumber: true })}
+            />
+            <Input type="text" placeholder="Rua" {...register("rua")} />
           </div>
         </FormContainerStats>
         <FormContainerStats className="paymentContainer">
@@ -90,8 +106,9 @@ export const Checkout = () => {
               <h3>R$ {totalWithTaxes.toFixed(2)}</h3>
             </TotalItems>
           </div>
-          {/* disabled quando inputs vazios */}
-          <SubmitButton>confirmar pedido</SubmitButton>
+          <SubmitButton disabled={isSubmitDisabled}>
+            confirmar pedido
+          </SubmitButton>
         </SelectedCoffeesStats>
       </SelectedCoffees>
     </Form>
