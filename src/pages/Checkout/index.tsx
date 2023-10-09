@@ -68,6 +68,7 @@ export const Checkout = () => {
     };
     setUserAddress((state) => [...state, newAddress]);
     reset();
+    console.log("Opção de pagamento selecionada:", selectedPaymentMethod);
   };
 
   return (
@@ -101,6 +102,7 @@ export const Checkout = () => {
           <PaymentOptions>
             {paymentOptions.map((option) => (
               <PaymentOption
+                type="button"
                 value={option.paymentMethod}
                 onClick={() => handlePaymentMethodChoice(option.paymentMethod)}
                 key={option.id}
