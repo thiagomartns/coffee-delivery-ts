@@ -2,13 +2,14 @@ import { useContext } from "react";
 import { CoffeeCartContext } from "../../contexts/CoffeeCartContext";
 import {
   CheckoutContainer,
-  FormContainer,
+  Form,
   FormContainerStats,
   Header,
   PaymentOption,
   PaymentOptions,
   SelectedCoffees,
   SelectedCoffeesStats,
+  SubmitButton,
   Title,
   TotalItems,
 } from "./styles";
@@ -28,8 +29,8 @@ export const Checkout = () => {
   const totalWithTaxes = totalValue + Number(deliveryTax);
 
   return (
-    <CheckoutContainer>
-      <FormContainer>
+    <Form>
+      <CheckoutContainer>
         <Title>Complete seu pedido</Title>
         <FormContainerStats className="addressContainer">
           <Header className="header">
@@ -39,7 +40,6 @@ export const Checkout = () => {
               <p>Informe o endereço onde deseja receber seu pedido</p>
             </div>
           </Header>
-          <form action=""></form>
         </FormContainerStats>
         <FormContainerStats className="paymentContainer">
           <Header className="header">
@@ -66,29 +66,28 @@ export const Checkout = () => {
             </PaymentOption>
           </PaymentOptions>
         </FormContainerStats>
-      </FormContainer>
+      </CheckoutContainer>
       <SelectedCoffees>
         <Title>Cafés Selecionados</Title>
         <SelectedCoffeesStats>
-          <form action="">
-            <div className="itemsSelected"></div>
-            <div className="totalPayment">
-              <TotalItems className="totalItems">
-                <p>Total de itens</p>
-                <p>R$ {totalValue.toFixed(2)}</p>
-              </TotalItems>
-              <TotalItems className="totalItems">
-                <p>Entrega</p>
-                <p>R$ {deliveryTax}</p>
-              </TotalItems>
-              <TotalItems className="totalItems">
-                <h3>Total</h3>
-                <h3>R$ {totalWithTaxes.toFixed(2)}</h3>
-              </TotalItems>
-            </div>
-          </form>
+          <div className="itemsSelected"></div>
+          <div className="totalPayment">
+            <TotalItems className="totalItems">
+              <p>Total de itens</p>
+              <p>R$ {totalValue.toFixed(2)}</p>
+            </TotalItems>
+            <TotalItems className="totalItems">
+              <p>Entrega</p>
+              <p>R$ {deliveryTax}</p>
+            </TotalItems>
+            <TotalItems className="totalItems">
+              <h3>Total</h3>
+              <h3>R$ {totalWithTaxes.toFixed(2)}</h3>
+            </TotalItems>
+          </div>
+          <SubmitButton>confirmar pedido</SubmitButton>
         </SelectedCoffeesStats>
       </SelectedCoffees>
-    </CheckoutContainer>
+    </Form>
   );
 };

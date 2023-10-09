@@ -1,15 +1,14 @@
 import styled from "styled-components";
 
-export const CheckoutContainer = styled.div`
+export const Form = styled.form`
   display: grid;
   grid-template-columns: 10fr 9fr;
   gap: 2rem;
 `;
 
-export const FormContainer = styled.div`
+export const CheckoutContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
 `;
 
 export const FormContainerStats = styled.div`
@@ -92,5 +91,23 @@ export const TotalItems = styled.div`
   h3 {
     font: ${(props) => props.theme.typography["roboto-b-text-l"]};
     color: ${(props) => props.theme.colors["base-subtitle"]};
+  }
+`;
+
+export const SubmitButton = styled.button`
+  width: 100%;
+  background-color: ${(props) => props.theme.colors.yellow};
+  font: ${(props) => props.theme.typography["button-g"]};
+  color: ${(props) => props.theme.colors.white};
+  text-transform: uppercase;
+  padding: 1rem;
+  border-radius: 6px;
+  border-color: transparent;
+  margin-top: 1rem;
+
+  &:hover {
+    cursor: pointer;
+    background-color: ${(props) => props.theme.colors["yellow-dark"]};
+    transition: background-color 0.3s ease;
   }
 `;
