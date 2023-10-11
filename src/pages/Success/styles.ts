@@ -9,6 +9,9 @@ export const SuccessContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    border: 1px solid ${(props) => props.theme.colors.yellow};
+    padding: 2rem;
+    border-radius: 6px 36px;
 
     .itemContainer {
       display: flex;
@@ -17,11 +20,17 @@ export const SuccessContainer = styled.div`
       gap: 1rem;
       .iconContainer {
         display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0.5rem;
+        padding: 0.25rem;
         border: 1px solid grey;
         border-radius: 50%;
+      }
+      .text {
+        color: ${(props) => props.theme.colors["base-text"]} p {
+          font: ${(props) => props.theme.typography["roboto-r-text-m"]};
+        }
+        span {
+          font: ${(props) => props.theme.typography["roboto-b-text-m"]};
+        }
       }
     }
   }

@@ -4,7 +4,7 @@ import { UserInfoContext } from "../../contexts/UserInfoContext";
 import { Clock, CurrencyDollar, MapPin } from "phosphor-react";
 
 export const Success = () => {
-  const { userAddress } = useContext(UserInfoContext);
+  const { userAddress, selectedPaymentMethod } = useContext(UserInfoContext);
 
   const firstUserAddress = userAddress.length > 0 ? userAddress[0] : null;
 
@@ -20,25 +20,35 @@ export const Success = () => {
             <div className="iconContainer">
               <MapPin />
             </div>
-            <p>
-              Entrega em <span>{firstUserAddress.rua}</span>
-            </p>
+            <div className="text">
+              <p>
+                Entrega em <span>{firstUserAddress.rua}</span>
+              </p>
+              <p>Leblon - Rio de Janeiro, RJ</p>
+            </div>
           </div>
           <div className="itemContainer">
             <div className="iconContainer">
               <Clock />
             </div>
-            <p>
-              Previsão de entrega <span>{firstUserAddress.rua}</span>
-            </p>
+            <div className="text">
+              <p>
+                Previsão de entrega <span>{firstUserAddress.rua}</span>
+              </p>
+              <span>20-30 minutos</span>
+            </div>
           </div>
           <div className="itemContainer">
             <div className="iconContainer">
               <CurrencyDollar />
             </div>
-            <p>
-              Pagamento na entrega <span>{firstUserAddress.rua}</span>
-            </p>
+            <div className="text">
+              <p>Pagamento na entrega</p>
+              <span>
+                {selectedPaymentMethod.charAt(0).toUpperCase() +
+                  selectedPaymentMethod.slice(1)}
+              </span>
+            </div>
           </div>
         </div>
       ) : (

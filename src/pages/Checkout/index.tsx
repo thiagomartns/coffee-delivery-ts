@@ -25,10 +25,8 @@ const newAddressFormValidationSchema = zod.object({
 type NewAddressFormData = zod.infer<typeof newAddressFormValidationSchema>;
 
 export const Checkout = () => {
-  const { paymentOptions, setUserAddress } = useContext(UserInfoContext);
-
-  const [selectedPaymentMethod, setSelectedPaymentMethod] =
-    useState<string>("");
+  const { paymentOptions, setUserAddress, setSelectedPaymentMethod } =
+    useContext(UserInfoContext);
 
   const handlePaymentMethodChoice = (paymentMethod: string) => {
     setSelectedPaymentMethod(paymentMethod);
@@ -104,7 +102,7 @@ export const Checkout = () => {
           </PaymentOptions>
         </FormContainerStats>
       </CheckoutContainer>
-      <SelectedCoffeesContainer />
+      <SelectedCoffeesContainer isSubmitDisabled={isSubmitDisabled} />
     </Form>
   );
 };

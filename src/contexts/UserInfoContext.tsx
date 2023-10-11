@@ -10,6 +10,8 @@ interface PaymentOption {
 interface UserInfoContextType {
   paymentOptions: PaymentOption[];
   userAddress: NewUserAddress[];
+  selectedPaymentMethod: string;
+  setSelectedPaymentMethod: React.Dispatch<React.SetStateAction<string>>;
   setUserAddress: React.Dispatch<React.SetStateAction<NewUserAddress[]>>;
 }
 
@@ -26,6 +28,8 @@ export const UserInfoContext = createContext<UserInfoContextType>({
   paymentOptions: [],
   userAddress: [],
   setUserAddress: () => {},
+  setSelectedPaymentMethod: () => {},
+  selectedPaymentMethod: "",
 });
 
 export const UserInfoContextProvider: React.FC<Props> = ({ children }) => {
@@ -48,10 +52,15 @@ export const UserInfoContextProvider: React.FC<Props> = ({ children }) => {
     },
   ];
 
+  const [selectedPaymentMethod, setSelectedPaymentMethod] =
+    useState<string>("");
+
   const contextValue = {
     paymentOptions,
     setUserAddress,
     userAddress,
+    setSelectedPaymentMethod,
+    selectedPaymentMethod,
   };
 
   return (

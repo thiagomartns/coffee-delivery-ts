@@ -8,7 +8,13 @@ import {
 } from "./styles";
 import { CoffeeCartContext } from "../../../../contexts/CoffeeCartContext";
 
-export const SelectedCoffeesContainer = () => {
+interface SelectedCoffeesProps {
+  isSubmitDisabled: boolean;
+}
+
+export const SelectedCoffeesContainer = ({
+  isSubmitDisabled,
+}: SelectedCoffeesProps) => {
   const { totalValue } = useContext(CoffeeCartContext);
 
   const deliveryTax = Number(3.5).toFixed(2);
@@ -34,7 +40,7 @@ export const SelectedCoffeesContainer = () => {
             <h3>R$ {totalWithTaxes.toFixed(2)}</h3>
           </TotalItems>
         </div>
-        <SubmitButton /*disabled={isSubmitDisabled}*/>
+        <SubmitButton disabled={isSubmitDisabled}>
           confirmar pedido
         </SubmitButton>
       </SelectedCoffeesStats>
