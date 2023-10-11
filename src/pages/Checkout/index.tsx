@@ -33,7 +33,7 @@ interface NewUserAddress {
 type NewAddressFormData = zod.infer<typeof newAddressFormValidationSchema>;
 
 export const Checkout = () => {
-  const { totalValue, paymentOptions } = useContext(CoffeeCartContext);
+  const { paymentOptions } = useContext(CoffeeCartContext);
 
   const [userAddress, setUserAddress] = useState<NewUserAddress[]>([]);
 
@@ -45,10 +45,6 @@ export const Checkout = () => {
   };
 
   const navigate = useNavigate();
-
-  const deliveryTax = Number(3.5).toFixed(2);
-
-  const totalWithTaxes = totalValue + Number(deliveryTax);
 
   const { register, handleSubmit, watch, reset } = useForm<NewAddressFormData>({
     resolver: zodResolver(newAddressFormValidationSchema),
@@ -80,7 +76,6 @@ export const Checkout = () => {
     <Form onSubmit={handleSubmit(handleCreateNewAddress)}>
       <CheckoutContainer>
         <Title>Complete seu pedido</Title>
-        {/* <h2>{userAddress.length > 0 ? userAddress[0].rua : ""}</h2> */}
         <FormContainerStats className="addressContainer">
           <Header className="header">
             <MapPin />
@@ -119,29 +114,7 @@ export const Checkout = () => {
           </PaymentOptions>
         </FormContainerStats>
       </CheckoutContainer>
-      <SelectedCoffees>
-        <Title>Cafés Selecionados</Title>
-        <SelectedCoffeesStats>
-          <div className="itemsSelected"></div>
-          <div className="totalPayment">
-            <TotalItems className="totalItems">
-              <p>Total de itens</p>
-              <p>R$ {totalValue.toFixed(2)}</p>
-            </TotalItems>
-            <TotalItems className="totalItems">
-              <p>Entrega</p>
-              <p>R$ {deliveryTax}</p>
-            </TotalItems>
-            <TotalItems className="totalItems">
-              <h3>Total</h3>
-              <h3>R$ {totalWithTaxes.toFixed(2)}</h3>
-            </TotalItems>
-          </div>
-          <SubmitButton disabled={isSubmitDisabled}>
-            confirmar pedido
-          </SubmitButton>
-        </SelectedCoffeesStats>
-      </SelectedCoffees>
+      <SelectedCoffees />
     </Form>
   );
 };
