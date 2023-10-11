@@ -16,7 +16,9 @@ export const Header = () => {
 
   return (
     <HeaderContainer>
-      <img src={Logo} alt="" />
+      <a href="/">
+        <img src={Logo} alt="" />
+      </a>
       <div className="buttons">
         <div className="button-city">
           <MapPin size={20} className="icon" />

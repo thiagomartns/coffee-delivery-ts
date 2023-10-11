@@ -7,7 +7,7 @@ export const Form = styled.form`
 
   .inputContainer {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 2rem;
   }
 `;
@@ -72,13 +72,17 @@ export const Input = styled.input`
 export const PaymentOptions = styled.div`
   display: flex;
   gap: 1rem;
+  .active {
+    border-color: ${(props) => props.theme.colors.purple};
+    background-color: ${(props) => props.theme.colors["purple-light"]};
+  }
 `;
 
 export const PaymentOption = styled.button`
   padding: 1rem;
   border-radius: 6px;
   background-color: ${(props) => props.theme.colors["base-button"]};
-  border-color: transparent;
+  border: 1px solid transparent;
   display: flex;
   align-items: center;
   gap: 0.5rem;

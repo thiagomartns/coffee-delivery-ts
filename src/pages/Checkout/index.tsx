@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import {
   CheckoutContainer,
   Form,
@@ -23,14 +23,18 @@ const newAddressFormValidationSchema = zod.object({
   numero: zod.string().min(1, "Informe o número da sua residência"),
   bairro: zod.string().min(1, "Informe o seu bairro"),
   cidade: zod.string().min(1, "Informe a sua cidade"),
-  estado: zod.string().min(1, "Informe o seu estado"),
+  estado: zod.string().min(1, "Informe o seu estado").max(2),
 });
 
 type NewAddressFormData = zod.infer<typeof newAddressFormValidationSchema>;
 
 export const Checkout = () => {
-  const { paymentOptions, setUserAddress, setSelectedPaymentMethod } =
-    useContext(UserInfoContext);
+  const {
+    paymentOptions,
+    setUserAddress,
+    setSelectedPaymentMethod,
+    selectedPaymentMethod,
+  } = useContext(UserInfoContext);
 
   const handlePaymentMethodChoice = (paymentMethod: string) => {
     setSelectedPaymentMethod(paymentMethod);
@@ -38,7 +42,7 @@ export const Checkout = () => {
 
   const navigate = useNavigate();
 
-  const { register, handleSubmit, watch, reset } = useForm<NewAddressFormData>({
+  const { register, handleSubmit, watch } = useForm<NewAddressFormData>({
     resolver: zodResolver(newAddressFormValidationSchema),
     defaultValues: {
       rua: "",
@@ -71,7 +75,6 @@ export const Checkout = () => {
       estado: data.estado,
     };
     setUserAddress((state) => [...state, newAddress]);
-    reset();
     navigate("/success");
 
     return newAddress;
@@ -116,6 +119,9 @@ export const Checkout = () => {
                 value={option.paymentMethod}
                 onClick={() => handlePaymentMethodChoice(option.paymentMethod)}
                 key={option.id}
+                className={
+                  selectedPaymentMethod == option.paymentMethod ? "active" : ""
+                }
               >
                 {option.icon}
                 <p>{option.paymentMethod}</p>
