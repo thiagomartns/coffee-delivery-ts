@@ -20,6 +20,10 @@ import { SelectedCoffeesContainer } from "./components/SelectedCoffees";
 const newAddressFormValidationSchema = zod.object({
   rua: zod.string().min(1, "Informe a rua"),
   cep: zod.string().min(1, "Informe seu CEP"),
+  numero: zod.string().min(1, "Informe o número da sua residência"),
+  bairro: zod.string().min(1, "Informe o seu bairro"),
+  cidade: zod.string().min(1, "Informe a sua cidade"),
+  estado: zod.string().min(1, "Informe o seu estado"),
 });
 
 type NewAddressFormData = zod.infer<typeof newAddressFormValidationSchema>;
@@ -39,19 +43,32 @@ export const Checkout = () => {
     defaultValues: {
       rua: "",
       cep: "",
+      numero: "",
+      bairro: "",
+      cidade: "",
+      estado: "",
     },
   });
 
   const rua = watch("rua");
   const cep = watch("cep");
+  const numero = watch("numero");
+  const bairro = watch("bairro");
+  const cidade = watch("cidade");
+  const estado = watch("estado");
 
-  const isSubmitDisabled = !rua || !cep;
+  const isSubmitDisabled =
+    !rua || !cep || !numero || !bairro || !cidade || !estado;
 
   const handleCreateNewAddress = (data: NewAddressFormData, e: any) => {
     e.preventDefault();
     const newAddress: NewAddressFormData = {
       rua: data.rua,
       cep: data.cep,
+      numero: data.numero,
+      bairro: data.bairro,
+      cidade: data.cidade,
+      estado: data.estado,
     };
     setUserAddress((state) => [...state, newAddress]);
     reset();
@@ -75,6 +92,11 @@ export const Checkout = () => {
           <div className="inputContainer">
             <Input type="text" placeholder="CEP" {...register("cep")} />
             <Input type="text" placeholder="Rua" {...register("rua")} />
+            <Input type="text" placeholder="Número" {...register("numero")} />
+            {/* <Input type="text" placeholder="Complemento" {...register("rua")} /> */}
+            <Input type="text" placeholder="Bairro" {...register("bairro")} />
+            <Input type="text" placeholder="Cidade" {...register("cidade")} />
+            <Input type="text" placeholder="Estado" {...register("estado")} />
           </div>
         </FormContainerStats>
         <FormContainerStats className="paymentContainer">

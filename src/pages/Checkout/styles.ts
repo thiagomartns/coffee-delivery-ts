@@ -49,7 +49,7 @@ export const Header = styled.div`
 
 export const Input = styled.input`
   display: flex;
-  width: 434px;
+  /* width: 434px; */
   padding: 12px;
   align-items: center;
   gap: 4px;

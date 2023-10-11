@@ -22,6 +22,10 @@ interface Props {
 interface NewUserAddress {
   rua: string;
   cep: string;
+  numero: string;
+  bairro: string;
+  cidade: string;
+  estado: string;
 }
 
 export const UserInfoContext = createContext<UserInfoContextType>({

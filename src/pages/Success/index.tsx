@@ -22,9 +22,15 @@ export const Success = () => {
             </div>
             <div className="text">
               <p>
-                Entrega em <span>{firstUserAddress.rua}</span>
+                Entrega em{" "}
+                <span>
+                  {firstUserAddress.rua}, {firstUserAddress.numero}
+                </span>
               </p>
-              <p>Leblon - Rio de Janeiro, RJ</p>
+              <p>
+                {firstUserAddress.bairro} - {firstUserAddress.cidade},{" "}
+                {firstUserAddress.estado}
+              </p>
             </div>
           </div>
           <div className="itemContainer">
@@ -32,9 +38,7 @@ export const Success = () => {
               <Clock />
             </div>
             <div className="text">
-              <p>
-                Previsão de entrega <span>{firstUserAddress.rua}</span>
-              </p>
+              <p>Previsão de entrega</p>
               <span>20-30 minutos</span>
             </div>
           </div>
