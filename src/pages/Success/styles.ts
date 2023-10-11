@@ -15,9 +15,8 @@ export const SuccessContainer = styled.div`
 
     .itemContainer {
       display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      gap: 1rem;
+      align-items: flex-start;
+      gap: 1.25rem;
       .iconContainer {
         display: flex;
         padding: 0.25rem;
@@ -25,7 +24,9 @@ export const SuccessContainer = styled.div`
         border-radius: 50%;
       }
       .text {
-        color: ${(props) => props.theme.colors["base-text"]} p {
+        color: ${(props) => props.theme.colors["base-text"]};
+
+        p {
           font: ${(props) => props.theme.typography["roboto-r-text-m"]};
         }
         span {

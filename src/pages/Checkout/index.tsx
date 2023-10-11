@@ -24,6 +24,7 @@ const newAddressFormValidationSchema = zod.object({
   bairro: zod.string().min(1, "Informe o seu bairro"),
   cidade: zod.string().min(1, "Informe a sua cidade"),
   estado: zod.string().min(1, "Informe o seu estado").max(2),
+  // complemento: zod.string().min(1, "Informe a sua cidade").optional(),
 });
 
 type NewAddressFormData = zod.infer<typeof newAddressFormValidationSchema>;
