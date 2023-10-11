@@ -4,17 +4,20 @@ import { GlobalStyle } from "./styles/global";
 import { BrowserRouter } from "react-router-dom";
 import { Router } from "./Router";
 import { CoffeeCartContextProvider } from "./contexts/CoffeeCartContext";
+import { UserInfoContextProvider } from "./contexts/UserInfoContext";
 
 function App() {
   return (
-    <CoffeeCartContextProvider>
-      <ThemeProvider theme={defaultTheme}>
-        <BrowserRouter>
-          <Router />
-        </BrowserRouter>
-        <GlobalStyle />
-      </ThemeProvider>
-    </CoffeeCartContextProvider>
+    <UserInfoContextProvider>
+      <CoffeeCartContextProvider>
+        <ThemeProvider theme={defaultTheme}>
+          <BrowserRouter>
+            <Router />
+          </BrowserRouter>
+          <GlobalStyle />
+        </ThemeProvider>
+      </CoffeeCartContextProvider>
+    </UserInfoContextProvider>
   );
 }
 

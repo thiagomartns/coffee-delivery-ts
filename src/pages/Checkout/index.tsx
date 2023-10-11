@@ -1,5 +1,4 @@
 import { useContext, useState } from "react";
-import { CoffeeCartContext } from "../../contexts/CoffeeCartContext";
 import {
   CheckoutContainer,
   Form,
@@ -8,17 +7,15 @@ import {
   Input,
   PaymentOption,
   PaymentOptions,
-  SelectedCoffees,
-  SelectedCoffeesStats,
-  SubmitButton,
   Title,
-  TotalItems,
 } from "./styles";
 import { CurrencyDollar, MapPin } from "phosphor-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as zod from "zod";
 import { useNavigate } from "react-router-dom";
+import { UserInfoContext } from "../../contexts/UserInfoContext";
+import { SelectedCoffeesContainer } from "./components/SelectedCoffees";
 
 const newAddressFormValidationSchema = zod.object({
   rua: zod.string().min(1, "Informe a rua"),
@@ -33,7 +30,7 @@ interface NewUserAddress {
 type NewAddressFormData = zod.infer<typeof newAddressFormValidationSchema>;
 
 export const Checkout = () => {
-  const { paymentOptions } = useContext(CoffeeCartContext);
+  const { paymentOptions } = useContext(UserInfoContext);
 
   const [userAddress, setUserAddress] = useState<NewUserAddress[]>([]);
 
@@ -114,7 +111,7 @@ export const Checkout = () => {
           </PaymentOptions>
         </FormContainerStats>
       </CheckoutContainer>
-      <SelectedCoffees />
+      <SelectedCoffeesContainer />
     </Form>
   );
 };

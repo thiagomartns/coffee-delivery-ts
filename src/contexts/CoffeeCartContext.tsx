@@ -1,18 +1,10 @@
 import { createContext, useState } from "react";
-import { Bank, CreditCard, Money } from "phosphor-react";
-
-interface PaymentOption {
-  id: number;
-  icon: JSX.Element;
-  paymentMethod: string;
-}
 
 interface CoffeeCartContextType {
   updateTotal: (amount: number) => void;
   updateTotalValue: (amount: number) => void;
   total: number;
   totalValue: number;
-  paymentOptions: PaymentOption[];
 }
 
 interface Props {
@@ -24,7 +16,6 @@ export const CoffeeCartContext = createContext<CoffeeCartContextType>({
   updateTotalValue: () => {},
   total: 0,
   totalValue: 0,
-  paymentOptions: [],
 });
 
 export const CoffeeCartContextProvider: React.FC<Props> = ({ children }) => {
@@ -40,30 +31,11 @@ export const CoffeeCartContextProvider: React.FC<Props> = ({ children }) => {
     setTotalValue(totalValue + amountValue);
   };
 
-  const paymentOptions = [
-    {
-      id: 1,
-      icon: <CreditCard />,
-      paymentMethod: "cartão de crédito",
-    },
-    {
-      id: 2,
-      icon: <Bank />,
-      paymentMethod: "cartão de débito",
-    },
-    {
-      id: 3,
-      icon: <Money />,
-      paymentMethod: "dinheiro",
-    },
-  ];
-
   const contextValue = {
     updateTotal,
     total,
     updateTotalValue,
     totalValue,
-    paymentOptions,
   };
 
   return (
