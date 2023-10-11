@@ -4,6 +4,12 @@ export const Form = styled.form`
   display: grid;
   grid-template-columns: 10fr 9fr;
   gap: 2rem;
+  /* padding: 1rem; */
+
+  @media (min-width: 375px) and (max-width: 1200px) {
+    display: flex;
+    flex-direction: column;
+  }
 
   .inputContainer {
     display: flex;
@@ -21,6 +27,7 @@ export const FormContainerStats = styled.div`
   background-color: ${(props) => props.theme.colors["base-card"]};
   padding: 40px;
   border-radius: 6px;
+  width: 100%;
 `;
 
 export const Title = styled.h1`
@@ -71,6 +78,7 @@ export const Input = styled.input`
 
 export const PaymentOptions = styled.div`
   display: flex;
+  justify-content: space-between;
   gap: 1rem;
   .active {
     border-color: ${(props) => props.theme.colors.purple};
@@ -79,13 +87,15 @@ export const PaymentOptions = styled.div`
 `;
 
 export const PaymentOption = styled.button`
-  padding: 1rem;
+  padding: 0.75rem;
   border-radius: 6px;
   background-color: ${(props) => props.theme.colors["base-button"]};
   border: 1px solid transparent;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
+  width: 100%;
   p {
     font: ${(props) => props.theme.typography["button-m"]};
     color: ${(props) => props.theme.colors["base-text"]};

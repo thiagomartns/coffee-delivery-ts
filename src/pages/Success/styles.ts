@@ -5,32 +5,47 @@ export const SuccessContainer = styled.div`
   flex-direction: column;
   gap: 2rem;
 
-  .successCard {
+  .successContent {
     display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    border: 1px solid ${(props) => props.theme.colors.yellow};
-    padding: 2rem;
-    border-radius: 6px 36px;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2rem;
 
-    .itemContainer {
+    .successCard {
       display: flex;
-      align-items: flex-start;
-      gap: 1.25rem;
-      .iconContainer {
-        display: flex;
-        padding: 0.25rem;
-        border: 1px solid grey;
-        border-radius: 50%;
-      }
-      .text {
-        color: ${(props) => props.theme.colors["base-text"]};
+      width: 50%;
+      flex-direction: column;
+      gap: 2rem;
+      border: 1px solid ${(props) => props.theme.colors.yellow};
+      padding: 2rem;
+      border-radius: 6px 36px;
+      /* border-image: linear-gradient(
+          to right,
+          ${(props) => props.theme.colors.yellow},
+          ${(props) => props.theme.colors.purple}
+        )
+        1; */
 
-        p {
-          font: ${(props) => props.theme.typography["roboto-r-text-m"]};
+      .itemContainer {
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
+
+        .iconContainer {
+          display: flex;
+          padding: 0.25rem;
+          border: 1px solid grey;
+          border-radius: 50%;
         }
-        span {
-          font: ${(props) => props.theme.typography["roboto-b-text-m"]};
+        .text {
+          color: ${(props) => props.theme.colors["base-text"]};
+
+          p {
+            font: ${(props) => props.theme.typography["roboto-r-text-m"]};
+          }
+          span {
+            font: ${(props) => props.theme.typography["roboto-b-text-m"]};
+          }
         }
       }
     }

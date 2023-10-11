@@ -87,7 +87,7 @@ export const Checkout = () => {
         <Title>Complete seu pedido</Title>
         <FormContainerStats className="addressContainer">
           <Header className="header">
-            <MapPin />
+            <MapPin size={20} />
             <div className="text">
               <h2>Endereço de Entrega</h2>
               <p>Informe o endereço onde deseja receber seu pedido</p>
@@ -105,7 +105,7 @@ export const Checkout = () => {
         </FormContainerStats>
         <FormContainerStats className="paymentContainer">
           <Header className="header">
-            <CurrencyDollar />
+            <CurrencyDollar size={20} />
             <div className="text">
               <h2>Pagamento</h2>
               <p>

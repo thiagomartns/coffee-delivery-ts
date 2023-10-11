@@ -7,6 +7,10 @@ export const SelectedCoffeesStats = styled.div`
   padding: 40px;
   border-radius: 6px 44px;
 
+  @media (min-width: 375px) and (max-width: 1200px) {
+    padding: 40px 80px;
+  }
+
   .totalPayment {
     display: flex;
     flex-direction: column;

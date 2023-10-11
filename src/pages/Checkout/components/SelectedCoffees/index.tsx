@@ -17,7 +17,7 @@ export const SelectedCoffeesContainer = ({
 }: SelectedCoffeesProps) => {
   const { totalValue } = useContext(CoffeeCartContext);
 
-  const deliveryTax = Number(3.5).toFixed(2);
+  const deliveryTax = 3.5;
 
   const totalWithTaxes = totalValue + Number(deliveryTax);
 
@@ -29,15 +29,33 @@ export const SelectedCoffeesContainer = ({
         <div className="totalPayment">
           <TotalItems className="totalItems">
             <p>Total de itens</p>
-            <p>R$ {totalValue.toFixed(2)}</p>
+            <p>
+              R${" "}
+              {totalValue.toLocaleString("pt-br", {
+                style: "decimal",
+                minimumFractionDigits: 2,
+              })}
+            </p>
           </TotalItems>
           <TotalItems className="totalItems">
             <p>Entrega</p>
-            <p>R$ {deliveryTax}</p>
+            <p>
+              R${" "}
+              {deliveryTax.toLocaleString("pt-br", {
+                style: "decimal",
+                minimumFractionDigits: 2,
+              })}
+            </p>
           </TotalItems>
           <TotalItems className="totalItems">
             <h3>Total</h3>
-            <h3>R$ {totalWithTaxes.toFixed(2)}</h3>
+            <h3>
+              R${" "}
+              {totalWithTaxes.toLocaleString("pt-br", {
+                style: "decimal",
+                minimumFractionDigits: 2,
+              })}
+            </h3>
           </TotalItems>
         </div>
         <SubmitButton disabled={isSubmitDisabled}>
