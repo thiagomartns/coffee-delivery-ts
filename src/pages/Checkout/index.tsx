@@ -22,17 +22,10 @@ const newAddressFormValidationSchema = zod.object({
   cep: zod.string().min(1, "Informe seu CEP"),
 });
 
-interface NewUserAddress {
-  rua: string;
-  cep: string;
-}
-
 type NewAddressFormData = zod.infer<typeof newAddressFormValidationSchema>;
 
 export const Checkout = () => {
-  const { paymentOptions } = useContext(UserInfoContext);
-
-  const [userAddress, setUserAddress] = useState<NewUserAddress[]>([]);
+  const { paymentOptions, setUserAddress } = useContext(UserInfoContext);
 
   const [selectedPaymentMethod, setSelectedPaymentMethod] =
     useState<string>("");
