@@ -7,11 +7,11 @@ export const Card = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  margin: 2rem 0;
   padding: 2rem;
   gap: 1.25rem;
   width: 256px;
-  height: 410px;
+  height: 350px;
+  margin-top: 6rem;
 
   @media (min-width: 767px) and (max-width: 1400px) {
     flex: 1;
@@ -20,6 +20,7 @@ export const Card = styled.div`
   img {
     width: 120px;
     height: 120px;
+    margin-top: -4rem;
   }
 
   .badgeContainer {
