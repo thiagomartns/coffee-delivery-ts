@@ -27,8 +27,12 @@ export const SelectedCoffeesContainer = ({
       <SelectedCoffeesStats>
         <div className="itemsSelected">
           {coffeesBought.map((coffeeItemBought) => (
-            <div className="">
-              <img src={coffeeItemBought.img} alt="" />
+            <div className="coffeItemBought">
+              <div className="stats">
+                <img src={coffeeItemBought.img} alt="" />
+                <p>{coffeeItemBought.title}</p>
+              </div>
+              <h3>R$ {coffeeItemBought.price}</h3>
             </div>
           ))}
         </div>

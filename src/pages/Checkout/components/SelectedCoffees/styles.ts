@@ -15,6 +15,34 @@ export const SelectedCoffeesStats = styled.div`
     display: flex;
     flex-direction: column;
   }
+
+  .itemsSelected {
+    display: flex;
+    flex-direction: column;
+    .coffeItemBought {
+      display: flex;
+      justify-content: space-between;
+      margin: 2.75rem 0;
+      .stats {
+        display: flex;
+        gap: 1rem;
+        img {
+          width: 20%;
+        }
+
+        p {
+          font: ${(props) => props.theme.typography["roboto-r-text-m"]};
+          color: ${(props) => props.theme.colors["base-subtitle"]};
+          text-transform: capitalize;
+        }
+      }
+
+      h3 {
+        font: ${(props) => props.theme.typography["roboto-b-text-m"]};
+        color: ${(props) => props.theme.colors["base-text"]};
+      }
+    }
+  }
 `;
 
 export const Title = styled.h1`
