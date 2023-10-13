@@ -1,18 +1,11 @@
 import { Minus, Plus, ShoppingCart } from "phosphor-react";
 import { useState, useContext } from "react";
 import { Card } from "./styles";
-import { CoffeeCartContext } from "../../../../../../contexts/CoffeeCartContext";
+import {
+  CoffeeCartContext,
+  CoffeeData,
+} from "../../../../../../contexts/CoffeeCartContext";
 import { useNavigate } from "react-router-dom";
-
-interface CoffeeData {
-  id: number;
-  img: string;
-  title: string;
-  tags: string[];
-  info: string;
-  price: number;
-}
-
 interface CoffeeItemProps {
   data: CoffeeData;
 }
@@ -20,7 +13,8 @@ interface CoffeeItemProps {
 export const CoffeeItem = ({ data }: CoffeeItemProps) => {
   const [count, setCount] = useState<number>(0);
 
-  const { updateTotal, updateTotalValue } = useContext(CoffeeCartContext);
+  const { updateTotal, updateTotalValue, setCoffeesBought } =
+    useContext(CoffeeCartContext);
 
   const navigate = useNavigate();
 
@@ -32,12 +26,16 @@ export const CoffeeItem = ({ data }: CoffeeItemProps) => {
     setCount(count + 1);
     updateTotal(1);
     updateTotalValue(data.price);
+    setCoffeesBought((prevCoffees) => [...prevCoffees, data]);
   };
 
   const handleMinus = () => {
     setCount(count - 1);
     updateTotal(-1);
     updateTotalValue(-data.price);
+    setCoffeesBought((prevCoffees) => {
+      return prevCoffees.filter((coffee) => coffee.id !== data.id);
+    });
   };
 
   return (

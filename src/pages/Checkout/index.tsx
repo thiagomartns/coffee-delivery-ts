@@ -16,6 +16,7 @@ import * as zod from "zod";
 import { useNavigate } from "react-router-dom";
 import { UserInfoContext } from "../../contexts/UserInfoContext";
 import { SelectedCoffeesContainer } from "./components/SelectedCoffees";
+import { CoffeeCartContext } from "../../contexts/CoffeeCartContext";
 
 const newAddressFormValidationSchema = zod.object({
   rua: zod.string().min(1, "Informe a rua"),

@@ -15,7 +15,7 @@ interface SelectedCoffeesProps {
 export const SelectedCoffeesContainer = ({
   isSubmitDisabled,
 }: SelectedCoffeesProps) => {
-  const { totalValue } = useContext(CoffeeCartContext);
+  const { totalValue, coffeesBought } = useContext(CoffeeCartContext);
 
   const deliveryTax = 3.5;
 
@@ -25,7 +25,13 @@ export const SelectedCoffeesContainer = ({
     <SelectedCoffees>
       <Title>Cafés Selecionados</Title>
       <SelectedCoffeesStats>
-        <div className="itemsSelected"></div>
+        <div className="itemsSelected">
+          {coffeesBought.map((coffeeItemBought) => (
+            <div className="">
+              <img src={coffeeItemBought.img} alt="" />
+            </div>
+          ))}
+        </div>
         <div className="totalPayment">
           <TotalItems className="totalItems">
             <p>Total de itens</p>
